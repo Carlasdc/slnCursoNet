@@ -11,13 +11,13 @@ namespace WindowsApp.Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public decimal PrecioCosto { get; set; }
-        public decimal Margen { get; set; }
-        public decimal IVA { get; set; }
+        public double Margen { get; set; }
+        public double IVA { get; set; }
         public decimal PrecioBruto { get
             {
                 decimal _PrecioBruto = 0;
                 {
-                    _PrecioBruto = this.PrecioCosto + this.IVA;
+                    _PrecioBruto = this.PrecioCosto + Convert.ToDecimal(this.Margen);
                 }
                 return _PrecioBruto;
             }
@@ -26,7 +26,7 @@ namespace WindowsApp.Entidades
             {
                 decimal _PrecioVenta = 0;
                 {
-                    _PrecioVenta = this.PrecioBruto + this.Margen;
+                    _PrecioVenta = this.PrecioBruto + Convert.ToDecimal(this.IVA);
                 }
             return _PrecioVenta;
             }
